@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakor.DataStructures", "Vakor.DataStructures\Vakor.DataStructures.csproj", "{AA575FCF-0610-4C0E-A603-2DA7697B6D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakor.ConsoleApp", "Vakor.ConsoleApp\Vakor.ConsoleApp.csproj", "{35079B86-0A9F-46A6-9FC0-9515864A81E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakor.DataStructures.Tests", "Vakor.DataStructures.Tests\Vakor.DataStructures.Tests.csproj", "{28B55079-E254-4A9C-AECF-9BB4A48CB286}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA575FCF-0610-4C0E-A603-2DA7697B6D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA575FCF-0610-4C0E-A603-2DA7697B6D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA575FCF-0610-4C0E-A603-2DA7697B6D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA575FCF-0610-4C0E-A603-2DA7697B6D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35079B86-0A9F-46A6-9FC0-9515864A81E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35079B86-0A9F-46A6-9FC0-9515864A81E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35079B86-0A9F-46A6-9FC0-9515864A81E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35079B86-0A9F-46A6-9FC0-9515864A81E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B55079-E254-4A9C-AECF-9BB4A48CB286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B55079-E254-4A9C-AECF-9BB4A48CB286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B55079-E254-4A9C-AECF-9BB4A48CB286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B55079-E254-4A9C-AECF-9BB4A48CB286}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
