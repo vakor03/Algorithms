@@ -23,14 +23,14 @@ namespace Vakor.DataStructures.Stacks
         {
             if (Length == 0)
             {
-                throw new ArgumentException();
+                throw new IndexOutOfRangeException();
             }
 
             T element = _linkedList.Last.Data;
             _linkedList.RemoveAt(_linkedList.Length - 1);
             return element;
         }
-
+        
         public void Clear()
         {
             _linkedList.Clear();

@@ -17,6 +17,7 @@
         /// <summary>
         /// Returns top element of the stack and removes it from stack
         /// </summary>
+        /// <exception cref="System.ArgumentException">Thrown when stack is empty</exception>
         /// <returns>top element of stack</returns>
         T Pop();
 

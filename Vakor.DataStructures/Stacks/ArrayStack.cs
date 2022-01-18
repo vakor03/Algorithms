@@ -29,7 +29,7 @@ namespace Vakor.DataStructures.Stacks
         {
             if (_stackPointer == 0)
             {
-                throw new ArgumentException("Stack is empty");
+                throw new IndexOutOfRangeException("Stack is empty");
             }
 
             return _stackArray[--_stackPointer];

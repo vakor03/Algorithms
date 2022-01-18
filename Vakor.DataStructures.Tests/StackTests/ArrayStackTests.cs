@@ -40,7 +40,7 @@ namespace Vakor.DataStructures.Tests.StackTests
         [TestMethod]
         public void EmptyStackPopTest()
         {
-            Assert.ThrowsException<ArgumentException>(() => _stack.Pop());
+            Assert.ThrowsException<IndexOutOfRangeException>(() => _stack.Pop());
         }
     }
 }
