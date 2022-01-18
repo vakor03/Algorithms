@@ -13,11 +13,16 @@
         /// </summary>
         /// <param name="element">element to add</param>
         void Push(T element);
-
+        
         /// <summary>
         /// Returns top element of the stack and removes it from stack
         /// </summary>
         /// <returns>top element of stack</returns>
         T Pop();
+
+        /// <summary>
+        /// Clears the stack
+        /// </summary>
+        void Clear();
     }
 }

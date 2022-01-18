@@ -35,6 +35,12 @@ namespace Vakor.DataStructures.Stacks
             return _stackArray[--_stackPointer];
         }
 
+        public void Clear()
+        {
+            _stackArray = new T[2];
+            _stackPointer = 0;
+        }
+
         /// <summary>
         /// Resizes stack array if stack os overflown
         /// </summary>

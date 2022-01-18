@@ -54,6 +54,7 @@
         <Compile Include="Queues\IQueue.cs" />
         <Compile Include="Stacks\ArrayStack.cs" />
         <Compile Include="Stacks\IStack.cs" />
+        <Compile Include="Stacks\LinkedListStack.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
