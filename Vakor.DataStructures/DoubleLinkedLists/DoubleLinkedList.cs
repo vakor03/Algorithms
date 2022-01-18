@@ -44,26 +44,32 @@ namespace Vakor.DataStructures.DoubleLinkedLists
         {
             if (index < 0 || index > Length)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new IndexOutOfRangeException();
             }
 
             if (index == Length)
             {
                 Insert(element);
+                return;
+            }
+
+            IDoubleLinkedNode<T> current = FindNodeAt(index);
+            IDoubleLinkedNode<T> predecessor = current.PrevElement;
+
+            IDoubleLinkedNode<T> newNode = new DoubleLinkedNode<T>(element);
+
+            if (predecessor != null)
+            {
+                predecessor.NextElement = newNode;
+                newNode.PrevElement = predecessor;
             }
             else
             {
-                IDoubleLinkedNode<T> current = FindNodeAt(index);
-                IDoubleLinkedNode<T> predecessor = current.PrevElement;
-
-                IDoubleLinkedNode<T> newNode = new DoubleLinkedNode<T>(element);
-
-                predecessor.NextElement = newNode;
-                newNode.PrevElement = predecessor;
-
-                current.PrevElement = newNode;
-                newNode.NextElement = current;
+                First = newNode;
             }
+
+            current.PrevElement = newNode;
+            newNode.NextElement = current;
 
             Length++;
         }
@@ -100,7 +106,7 @@ namespace Vakor.DataStructures.DoubleLinkedLists
         {
             if (index < 0 || index >= Length)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new IndexOutOfRangeException();
             }
 
             IDoubleLinkedNode<T> current = FindNodeAt(index);
@@ -122,6 +128,13 @@ namespace Vakor.DataStructures.DoubleLinkedLists
             }
 
             Length--;
+        }
+
+        public void Clean()
+        {
+            First = null;
+            Last = null;
+            Length = 0;
         }
 
         public IDoubleLinkedNode<T> Search(T searchElement)
@@ -148,7 +161,7 @@ namespace Vakor.DataStructures.DoubleLinkedLists
         {
             if (index < 0 || index >= Length)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new IndexOutOfRangeException();
             }
 
             IDoubleLinkedNode<T> current;
@@ -156,7 +169,7 @@ namespace Vakor.DataStructures.DoubleLinkedLists
             if (index > Length / 2)
             {
                 current = Last;
-                for (int i = 0; i < Length - index; i++)
+                for (int i = 0; i < Length - index - 1; i++)
                 {
                     current = current.PrevElement;
                 }

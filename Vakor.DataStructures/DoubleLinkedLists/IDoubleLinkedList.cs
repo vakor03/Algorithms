@@ -16,6 +16,8 @@ namespace Vakor.DataStructures.DoubleLinkedLists
         void Remove(T element);
         void RemoveAt(int index);
 
+        void Clean();
+
         IDoubleLinkedNode<T> Search(T searchElement);
     }
 }
