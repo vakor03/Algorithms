@@ -22,7 +22,7 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
         [TestCleanup]
         public void CleanUpComponents()
         {
-            _linkedList.Clean();
+            _linkedList.Clear();
         }
         
         [TestMethod]
@@ -222,6 +222,46 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
             Assert.AreEqual(elements[1], _linkedList.First.Data);
             Assert.AreEqual(null, _linkedList.First.PrevElement);
             Assert.AreEqual(elements[2], _linkedList.First.NextElement.Data);
+        }
+
+        [TestMethod]
+        public void RemoveAllTest()
+        {
+            List<int> elements = GenerateRandomInts(10);
+
+            foreach (var element in elements)
+            {
+                _linkedList.Insert(element);
+            }
+
+            foreach (var element in elements)
+            {
+                _linkedList.Remove(element);
+            }
+
+            Assert.AreEqual(null, _linkedList.First);
+            Assert.AreEqual(null, _linkedList.Last);
+            Assert.AreEqual(0, _linkedList.Length);
+        }
+        
+        [TestMethod]
+        public void RemoveAtAllTest()
+        {
+            List<int> elements = GenerateRandomInts(10);
+
+            foreach (var element in elements)
+            {
+                _linkedList.Insert(element);
+            }
+
+            foreach (var _ in elements)
+            {
+                _linkedList.RemoveAt(0);
+            }
+
+            Assert.AreEqual(null, _linkedList.First);
+            Assert.AreEqual(null, _linkedList.Last);
+            Assert.AreEqual(0, _linkedList.Length);
         }
 
         [TestMethod]

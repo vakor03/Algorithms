@@ -71,13 +71,15 @@
 
         public void Remove(T element)
         {
+            ILinkedNode<T> predecessor;
+            ILinkedNode<T> current;
             if (First.Data.Equals(element))
             {
-                First = First.NextElement;
+                predecessor = null;
+                current = First;
             }
             else
             {
-                ILinkedNode<T> predecessor;
                 try
                 {
                     predecessor = FindPredecessor(First, element);
@@ -87,15 +89,10 @@
                     throw new ArgumentException("List doesn't contains this value");
                 }
 
-                ILinkedNode<T> current = predecessor.NextElement;
-
-                if (Last == current)
-                {
-                    Last = predecessor;
-                }
-
-                predecessor.NextElement = current.NextElement;
+                current = predecessor.NextElement;
             }
+            
+            SetNeighbourLinksOnDelete(current, predecessor);
 
             Length--;
         }
@@ -107,22 +104,21 @@
                 throw new IndexOutOfRangeException();
             }
 
+            ILinkedNode<T> predecessor;
+            ILinkedNode<T> current;
+
             if (index == 0)
             {
-                First = First.NextElement;
+                predecessor = null;
+                current = First;
             }
             else
             {
-                ILinkedNode<T> predecessor = FindNodeAt(index - 1);
-                ILinkedNode<T> current = predecessor.NextElement;
-
-                if (Last == current)
-                {
-                    Last = predecessor;
-                }
-
-                predecessor.NextElement = current.NextElement;
+                predecessor = FindNodeAt(index - 1);
+                current = predecessor.NextElement;
             }
+
+            SetNeighbourLinksOnDelete(current, predecessor);
 
             Length--;
         }
@@ -184,6 +180,30 @@
             }
 
             return current;
+        }
+
+        private void SetNeighbourLinksOnDelete(ILinkedNode<T> current, ILinkedNode<T> predecessor)
+        {
+            if (current.NextElement == null && predecessor == null)
+            {
+                First = null;
+                Last = null;
+                return;
+            }
+
+            if (predecessor is null)
+            {
+                First = current.NextElement;
+            }
+            else
+            {
+                predecessor.NextElement = current.NextElement;
+            }
+
+            if (current.NextElement is null)
+            {
+                Last = predecessor;
+            }
         }
     }
 }

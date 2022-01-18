@@ -83,21 +83,7 @@ namespace Vakor.DataStructures.DoubleLinkedLists
                 throw new ArgumentException();
             }
 
-            if (current == First)
-            {
-                First = First.NextElement;
-                First.PrevElement = null;
-            }
-            else if (current == Last)
-            {
-                Last = Last.PrevElement;
-                Last.NextElement = null;
-            }
-            else
-            {
-                current.PrevElement.NextElement = current.NextElement;
-                current.NextElement.PrevElement = current.PrevElement;
-            }
+            SetNeighbourLinksOnDelete(current);
 
             Length--;
         }
@@ -110,27 +96,13 @@ namespace Vakor.DataStructures.DoubleLinkedLists
             }
 
             IDoubleLinkedNode<T> current = FindNodeAt(index);
-
-            if (current == First)
-            {
-                First = First.NextElement;
-                First.PrevElement = null;
-            }
-            else if (current == Last)
-            {
-                Last = Last.PrevElement;
-                Last.NextElement = null;
-            }
-            else
-            {
-                current.PrevElement.NextElement = current.NextElement;
-                current.NextElement.PrevElement = current.PrevElement;
-            }
+            
+            SetNeighbourLinksOnDelete(current);
 
             Length--;
         }
 
-        public void Clean()
+        public void Clear()
         {
             First = null;
             Last = null;
@@ -184,6 +156,34 @@ namespace Vakor.DataStructures.DoubleLinkedLists
             }
 
             return current;
+        }
+
+        private void SetNeighbourLinksOnDelete(IDoubleLinkedNode<T> current)
+        {
+            if (current.NextElement == null &&  current.PrevElement == null)
+            {
+                First = null;
+                Last = null;
+                return;
+            }
+            
+            if (current.PrevElement is null)
+            {
+                First = current.NextElement;
+            }
+            else
+            {
+                current.PrevElement.NextElement = current.NextElement;
+            }
+
+            if (current.NextElement is null)
+            {
+                Last = current.PrevElement;
+            }
+            else
+            {
+                current.NextElement.PrevElement = current.PrevElement;
+            }
         }
     }
 }

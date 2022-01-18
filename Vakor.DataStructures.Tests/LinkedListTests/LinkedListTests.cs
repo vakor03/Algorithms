@@ -184,7 +184,7 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
             Assert.ThrowsException<IndexOutOfRangeException>(() => _linkedList[-1]);
             Assert.ThrowsException<IndexOutOfRangeException>(() => _linkedList[12]);
         }
-        
+
         [TestMethod]
         public void GetNodeByIndexerTest()
         {
@@ -219,7 +219,7 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
             {
                 Assert.AreNotEqual(null, _linkedList[i].NextElement);
             }
-            
+
             Assert.AreEqual(null, _linkedList.Last.NextElement);
         }
 
@@ -237,7 +237,7 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
             Assert.ThrowsException<IndexOutOfRangeException>(() =>
                 _linkedList.InsertAt(_random.Next(), elements.Count + 1));
         }
-        
+
         [TestMethod]
         public void RemoveAtWrongIndexTest()
         {
@@ -261,13 +261,53 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
             {
                 _linkedList.Insert(element);
             }
-            
+
             _linkedList.RemoveAt(0);
-            
+
             Assert.AreEqual(elements[1], _linkedList.First.Data);
-            Assert.AreEqual(elements.Count -1,_linkedList.Length);
+            Assert.AreEqual(elements.Count - 1, _linkedList.Length);
+        }
+
+        [TestMethod]
+        public void RemoveAllTest()
+        {
+            List<int> elements = GenerateRandomInts(10);
+
+            foreach (var element in elements)
+            {
+                _linkedList.Insert(element);
+            }
+
+            foreach (var element in elements)
+            {
+                _linkedList.Remove(element);
+            }
+
+            Assert.AreEqual(null, _linkedList.First);
+            Assert.AreEqual(null, _linkedList.Last);
+            Assert.AreEqual(0, _linkedList.Length);
         }
         
+        [TestMethod]
+        public void RemoveAtAllTest()
+        {
+            List<int> elements = GenerateRandomInts(10);
+
+            foreach (var element in elements)
+            {
+                _linkedList.Insert(element);
+            }
+
+            foreach (var _ in elements)
+            {
+                _linkedList.RemoveAt(0);
+            }
+
+            Assert.AreEqual(null, _linkedList.First);
+            Assert.AreEqual(null, _linkedList.Last);
+            Assert.AreEqual(0, _linkedList.Length);
+        }
+
         [TestMethod]
         public void RemoveAtLastIndexTest()
         {
@@ -277,15 +317,14 @@ namespace Vakor.DataStructures.Tests.LinkedListTests
             {
                 _linkedList.Insert(element);
             }
-            
-            _linkedList.RemoveAt(elements.Count-1);
-            
+
+            _linkedList.RemoveAt(elements.Count - 1);
+
             Assert.AreEqual(elements[^2], _linkedList.Last.Data);
-            Assert.AreEqual(elements.Count -1,_linkedList.Length);
+            Assert.AreEqual(elements.Count - 1, _linkedList.Length);
         }
 
         [TestMethod]
-
         private List<int> GenerateRandomInts(int elementsCount, int min = 0, int max = 100)
         {
             List<int> newList = new List<int>();
