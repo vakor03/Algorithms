@@ -7,7 +7,7 @@
             Data = data;
         }
 
-                public T Data { get; set; }
+        public T Data { get; set; }
         public IDoubleLinkedNode<T> NextElement { get; set; }
         public IDoubleLinkedNode<T> PrevElement { get; set; }
     }
