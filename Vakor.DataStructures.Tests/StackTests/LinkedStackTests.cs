@@ -5,7 +5,7 @@ using Vakor.DataStructures.Stacks;
 namespace Vakor.DataStructures.Tests.StackTests
 {
     [TestClass]
-    public class ArrayStackTests
+    public class LinkedStackTests
     {
         private IStack<int> _stack;
 
@@ -18,7 +18,7 @@ namespace Vakor.DataStructures.Tests.StackTests
         [TestInitialize]
         public void TestInit()
         {
-            _stack = new ArrayStack<int>();
+            _stack = new LinkedListStack<int>();
         }
 
         [TestMethod]
